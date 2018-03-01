@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 
 from flask import Blueprint, jsonify, request, url_for, make_response, abort
 from flask_api import status    # HTTP Status Codes
@@ -51,7 +52,9 @@ def create_orders():
     This endpoint will create a order based the data in the body that is posted
     """
     check_content_type('application/json')
-    order = Order()
+
+    date = datetime.now()
+    order = Order(date=date)
 
     # MARK - create Item for each item in request body array of items
     """
