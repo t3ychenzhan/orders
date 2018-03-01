@@ -10,8 +10,10 @@ import unittest
 import os
 from datetime import datetime
 
-from models.order import Order, DataValidationError
-from app import app, db
+from ..service.models.order import Order, DataValidationError
+from service import db
+
+import app
 
 DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///db/test.db')
 

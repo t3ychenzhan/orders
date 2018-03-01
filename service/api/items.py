@@ -11,3 +11,19 @@ def index():
         'status': 'success',
         'message': 'pong!'
     })
+
+@items.route('/items', methods=['POST'])
+def create_items():
+    """
+    Creates an item
+    This endpoint will create an item based the data in the body that is posted
+    """
+    check_content_type('application/json')
+
+    item = Item()
+
+    item.deserialize(request.get_json())
+    item.save()
+    message = item.serialize()
+
+    return jsonify(message), status.HTTP_201_CREATED

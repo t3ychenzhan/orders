@@ -8,8 +8,11 @@ Test cases can be run with:
 
 import unittest
 import os
-from models.item import Item, DataValidationError
-from app import app, db
+
+from service.models.item import Item, DataValidationError
+from service import db
+
+import app
 
 DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///db/test.db')
 
